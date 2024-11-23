@@ -15,13 +15,14 @@
 # You should have received a copy of the GNU Affero General Public License
 
 # Django
-from django.conf.urls import include
-from django.contrib.auth import views
-from django.urls import (
-    path,
-    re_path,
-)
+from django.urls import path, re_path, include
 from django.views.generic import TemplateView
+from django.contrib.auth.views import (
+    LoginView,
+    PasswordResetCompleteView,
+    PasswordResetDoneView,
+)
+from wger.core.forms import UserLoginForm
 
 # wger
 from wger.core.forms import UserLoginForm
@@ -67,8 +68,8 @@ patterns_language = [
 # sub patterns for user
 patterns_user = [
     path(
-        'login',
-        views.LoginView.as_view(template_name='user/login.html', authentication_form=UserLoginForm),
+        'login/',
+        LoginView.as_view(template_name='user/login.html', authentication_form=UserLoginForm),
         name='login',
     ),
     path('logout', user.logout, name='logout'),
@@ -99,7 +100,7 @@ patterns_user = [
     ),
     path(
         'password/reset/done/',
-        views.PasswordResetDoneView.as_view(),
+        PasswordResetDoneView.as_view(),
         name='password_reset_done',
     ),
     re_path(
@@ -109,7 +110,7 @@ patterns_user = [
     ),
     path(
         'password/reset/complete/',
-        views.PasswordResetCompleteView.as_view(),
+        PasswordResetCompleteView.as_view(),
         name='password_reset_complete',
     ),
 ]

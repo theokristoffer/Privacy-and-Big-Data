@@ -74,6 +74,7 @@ class WeightEntry(models.Model):
         """
         Metaclass to set some other properties
         """
+        app_label = 'weight'
 
         verbose_name = _('Weight entry')
         ordering = [

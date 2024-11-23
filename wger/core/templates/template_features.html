@@ -16,7 +16,6 @@
     along with Workout Manager. If not, see <http://www.gnu.org/licenses/>.
 -->
 
-
 {% load i18n static compress %}
 <html lang="{{ language.short_name }}">
 <head>
@@ -24,7 +23,6 @@
     <meta charset="utf-8">
     <meta name="author" content="wger team">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
 
     <!-- OpenGraph -->
     {% block opengraph %}
@@ -43,18 +41,17 @@
         {% endif %}
     {% endblock %}
 
-
     {% compress css %}
-        <link rel="stylesheet" type="text/css" href="{% static 'yarn/bootstrap-compiled.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'yarn/components-font-awesome/css/all.css' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/landing_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'components-font-awesome/css/all.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/landing_page.css' %}">
     {% endcompress %}
 
     <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
 
     {% compress js %}
-        <script src="{% static 'yarn/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'yarn/popper.js/dist/umd/popper.js' %}"></script>
+    <script src="{% static 'bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '@popperjs/core/dist/umd/popper.min.js' %}"></script>
     {% endcompress %}
 
     <title>wger Workout Manager - {% translate "Features" %}</title>

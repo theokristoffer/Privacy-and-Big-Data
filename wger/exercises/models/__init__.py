@@ -26,3 +26,17 @@ from .image import ExerciseImage
 from .muscle import Muscle
 from .variation import Variation
 from .video import ExerciseVideo
+
+__all__ = [
+    "ExerciseBase",
+    "ExerciseCategory",
+    "ExerciseComment",
+    "DeletionLog",
+    "Equipment",
+    "Exercise",
+    "Alias",
+    "ExerciseImage",
+    "Muscle",
+    "Variation",
+    "ExerciseVideo",
+]

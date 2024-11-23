@@ -18,20 +18,22 @@
 import uuid
 
 # Django
-from django.contrib.postgres.indexes import GinIndex
-from django.core.validators import MinLengthValidator
 from django.db import models
+from django.core.validators import MinLengthValidator
+from django.contrib.postgres.indexes import GinIndex
+
 from django.urls import reverse
-from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+from django.utils.text import slugify
 
 # Third Party
-import bleach
 from simple_history.models import HistoricalRecords
+import bleach
 
 # wger
 from wger.core.models import Language
-from wger.exercises.models import ExerciseBase
+from wger.core.models.license import License
+from wger.exercises.models.base import ExerciseBase  # Adjust path if necessary
 from wger.utils.cache import (
     reset_exercise_api_cache,
     reset_workout_canonical_form,
@@ -40,6 +42,7 @@ from wger.utils.models import (
     AbstractHistoryMixin,
     AbstractLicenseModel,
 )
+
 
 
 class Exercise(AbstractLicenseModel, AbstractHistoryMixin, models.Model):

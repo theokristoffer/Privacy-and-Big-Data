@@ -21,6 +21,8 @@ from wger.core.models import License
 from wger.utils.constants import CC_BY_SA_4_ID
 
 
+
+
 """
 Abstract model classes
 """
@@ -31,10 +33,6 @@ class AbstractLicenseModel(models.Model):
     Abstract class that adds license information to a model
 
     Implements TASL (Title - Author - Source - License) for proper attribution
-
-    See also
-    - https://wiki.creativecommons.org/wiki/Recommended_practices_for_attribution
-    - https://wiki.creativecommons.org/wiki/Best_practices_for_attribution
     """
 
     class Meta:

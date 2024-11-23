@@ -18,10 +18,12 @@
 # Django
 from django.conf.urls import include
 from django.contrib.auth.decorators import login_required
-from django.urls import (
-    path,
-    re_path,
-)
+from django.urls import path, re_path
+from rest_framework.routers import DefaultRouter
+
+# Import ViewSet
+from .views.workout_views import WorkoutViewSet  # Correct import
+
 
 # wger
 from wger.core.views.react import ReactView
@@ -36,6 +38,12 @@ from wger.manager.views import (
     workout,
     workout_session,
 )
+
+# Define router
+router = DefaultRouter()
+router.register(r'workouts', WorkoutViewSet, basename='workouts')  # Register WorkoutViewSet
+
+
 
 
 # sub patterns for workout logs
@@ -376,3 +384,4 @@ urlpatterns = [
     path('schedule/', include((patterns_schedule, 'schedule'), namespace='schedule')),
     path('schedule/step/', include((patterns_step, 'step'), namespace='step')),
 ]
+urlpatterns += router.urls

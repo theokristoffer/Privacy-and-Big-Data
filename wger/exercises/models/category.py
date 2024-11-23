@@ -29,6 +29,9 @@ class ExerciseCategory(models.Model):
         verbose_name=_('Name'),
     )
 
+    def __str__(self):
+        return self.name
+
     # Metaclass to set some other properties
     class Meta:
         verbose_name_plural = _('Exercise Categories')

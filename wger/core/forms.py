@@ -102,6 +102,7 @@ class UserLoginForm(AuthenticationForm):
                 raise self.get_invalid_login_error()
             else:
                 self.confirm_login_allowed(self.user_cache)
+    pass
 
 
 class UserPreferencesForm(forms.ModelForm):

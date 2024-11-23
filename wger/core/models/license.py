@@ -49,6 +49,9 @@ class License(models.Model):
     )
     """URL to full license text or other information"""
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         """
         Set Meta options

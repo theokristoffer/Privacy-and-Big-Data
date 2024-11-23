@@ -17,6 +17,8 @@
 
 # Django
 from django.conf.urls import include
+from . import views
+
 from django.urls import (
     path,
     re_path,
@@ -24,7 +26,9 @@ from django.urls import (
 
 # wger
 from wger.core.views.react import ReactView
+from wger.exercises.views.exercise_list import ExerciseListView  # Ensure correct import
 from wger.exercises.views import (
+    ExerciseListView,
     categories,
     equipment,
     exercises,
@@ -150,6 +154,7 @@ patterns_exercise = [
 ]
 
 urlpatterns = [
+    path('exercise-list/', ExerciseListView.as_view(), name='exercise-list'),
     path('muscle/', include((patterns_muscle, 'muscle'), namespace='muscle')),
     path('category/', include((patterns_category, 'category'), namespace='category')),
     path('equipment/', include((patterns_equipment, 'equipment'), namespace='equipment')),

@@ -29,7 +29,7 @@ class AdminUserNote(m.Model):
         """
         Order by time
         """
-
+        app_label = 'gym'  # Explicitly associate this model with the 'gym' app
         ordering = [
             '-timestamp_created',
         ]

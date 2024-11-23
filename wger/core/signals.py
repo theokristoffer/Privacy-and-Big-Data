@@ -33,12 +33,12 @@ from wger.core.models import (
 from wger.utils.helpers import disable_for_loaddata
 
 
-@disable_for_loaddata
+@receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     """
-    Every new user gets a profile
+    Every new user gets a profile. Skip superusers.
     """
-    if created:
+    if created and not instance.is_superuser:
         UserProfile.objects.create(user=instance)
 
 

@@ -17,6 +17,8 @@
 
 # Django
 from django.conf import settings
+from django.contrib import admin
+from django.urls import path, include
 from django.conf.urls import include
 from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
@@ -24,7 +26,6 @@ from django.contrib.sitemaps.views import (
     index,
     sitemap,
 )
-from django.urls import path
 
 # Third Party
 from django_email_verification import urls as email_urls
@@ -42,6 +43,9 @@ from rest_framework_simplejwt.views import (
 
 # wger
 from wger.core.api import views as core_api_views
+from wger.core.views.sitemap import index, sitemap
+from wger.mailer import urls as email_urls
+from wger.manager.urls import router
 from wger.exercises.api import views as exercises_api_views
 from wger.exercises.sitemap import ExercisesSitemap
 from wger.gallery.api import views as gallery_api_views
@@ -216,7 +220,9 @@ sitemaps = {
 #
 # The actual URLs
 #
-urlpatterns = i18n_patterns(
+urlpatterns = [
+    path('admin/', admin.site.urls),  # Enable the Django admin interface
+    # Existing URL patterns
     path('', include(('wger.core.urls', 'core'), namespace='core')),
     path('routine/', include(('wger.manager.urls', 'manager'), namespace='manager')),
     path('exercise/', include(('wger.exercises.urls', 'exercise'), namespace='exercise')),
@@ -238,7 +244,7 @@ urlpatterns = i18n_patterns(
         {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap',
     ),
-)
+]
 
 #
 # URLs without language prefix

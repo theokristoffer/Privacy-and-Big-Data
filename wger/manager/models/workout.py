@@ -47,7 +47,7 @@ class Workout(models.Model):
         """
         Meta class to set some other properties
         """
-
+        app_label = 'manager'
         ordering = [
             '-creation_date',
         ]
