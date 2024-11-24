@@ -1,0 +1,3 @@
+"scripts": {
+    "build:css:sass": "sass wger/core/static/scss/main.scss wger/core/static/yarn/bootstrap-compiled.css"
+  },
