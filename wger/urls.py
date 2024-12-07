@@ -222,7 +222,7 @@ sitemaps = {
 #
 urlpatterns = [
     path('admin/', admin.site.urls),  # Enable the Django admin interface
-    # Existing URL patterns
+    #path('', views.homepage, name='homepage'),
     path('', include(('wger.core.urls', 'core'), namespace='core')),
     path('routine/', include(('wger.manager.urls', 'manager'), namespace='manager')),
     path('exercise/', include(('wger.exercises.urls', 'exercise'), namespace='exercise')),
