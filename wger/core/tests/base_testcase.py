@@ -32,6 +32,8 @@ from django.utils.translation import activate
 
 # wger
 from wger.utils.constants import TWOPLACES
+from wger.core.models import Language
+
 
 
 STATUS_CODES_FAIL = (302, 403, 404)
@@ -164,6 +166,8 @@ class BaseTestCase:
         """
         Reset settings
         """
+        #Language.objects.filter(short_name="en").delete()
+
         del os.environ['RECAPTCHA_TESTING']
         cache.clear()
 

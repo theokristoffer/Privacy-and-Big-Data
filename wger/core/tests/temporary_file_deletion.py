@@ -8,9 +8,23 @@ Purpose: Validate that temporary files (e.g., logs or cache) are deleted after u
 """
 
 import os
+import tempfile
+from django.test import TestCase
 
-def test_temporary_file_deletion():
-    temp_dir = "path/to/temp"  # Replace with actual path
-    assert not os.listdir(temp_dir), "Temporary files not deleted!"
+class TemporaryFileDeletionTest(TestCase):
+    def test_temporary_file_deletion(self):
+        temp_dir = tempfile.gettempdir()
+        print(f"Checking temporary directory: {temp_dir}")
 
-test_temporary_file_deletion()
+        # Filter for application-specific temporary files
+        app_temp_files = [
+            f for f in os.listdir(temp_dir)
+            if f.startswith("your_app_prefix_")  # Replace with a prefix if your app creates temp files
+        ]
+
+        self.assertFalse(
+            app_temp_files,
+            f"Temporary files not deleted! Found: {app_temp_files}"
+        )
+
+
